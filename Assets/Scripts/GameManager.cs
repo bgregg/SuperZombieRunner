@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
         spawner.active = false;
 
         ResetGame();
+
+        //here's a comment to track changes
     }
 
     // Update is called once per frame
