@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject playerPrefab;
+    private bool gameStarted;
+    private TimeManager timeManager;
 
     private GameObject player;
     private GameObject floor;
@@ -14,6 +16,7 @@ public class GameManager : MonoBehaviour
     {
         floor = GameObject.Find("Foreground");
         spawner = GameObject.Find("Spawner").GetComponent<Spawner>();
+        timeManager = GetComponent<TimeManager>();
     }
     // Start is called before the first frame update
     void Start()
@@ -35,7 +38,14 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(!gameStarted && Time.timeScale == 0)
+        {
+            if(Input.anyKeyDown)
+            {
+                timeManager.ManipulateTime(1, 1f);
+                ResetGame();
+            }
+        }
     }
 
     void OnPlayerKilled()
@@ -46,15 +56,22 @@ public class GameManager : MonoBehaviour
         playerDestroyScript.DestroyCallback -= OnPlayerKilled;
 
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+
+        timeManager.ManipulateTime(0, 5.5f);
+
+        gameStarted = false;
+
     }
 
     void ResetGame()
     {
         spawner.active = true;
 
-        player = GameObjectUtility.Instantiate(playerPrefab, new Vector3(0, (Screen.height/PixelPerfectCamera.pixelsToUnits) / 2, 0));
+        player = GameObjectUtility.Instantiate(playerPrefab, new Vector3(0, (Screen.height/PixelPerfectCamera.pixelsToUnits) / 2 + 100, 0));
 
         var playerDestroyScript = player.GetComponent<DestroyOffScreen>();
         playerDestroyScript.DestroyCallback += OnPlayerKilled;
+
+        gameStarted = true;
     }
 }

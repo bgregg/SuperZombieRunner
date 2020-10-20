@@ -41,15 +41,16 @@
      <Compile Include="Assets\Scripts\Obstacle.cs" />
      <Compile Include="Assets\Scripts\InstantVelocity.cs" />
      <Compile Include="Assets\Scripts\ObjectPool.cs" />
+     <Compile Include="Assets\Scripts\PlayerAnimationManager.cs" />
      <Compile Include="Assets\Scripts\InputState.cs" />
      <Compile Include="Assets\Scripts\TiledBackground.cs" />
      <Compile Include="Assets\Scripts\DestroyOffScreen.cs" />
      <Compile Include="Assets\Scripts\RecycleGameObject.cs" />
+     <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\Spawner.cs" />
      <Compile Include="Assets\Scripts\PixelPerfectCamera.cs" />
      <Compile Include="Assets\Scripts\Jump.cs" />
-     <Compile Include="Assets\Scripts\PlayerAnimationManager.cs" />
-     <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\TimeManager.cs" />
     <Reference Include="UnityEngine">
         <HintPath>D:/Program Files (x86)/Unity/2020.1.9f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
